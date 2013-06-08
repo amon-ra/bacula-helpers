@@ -39,7 +39,11 @@ restored=$(ls -1 "$RESTORE_PATH" | tr '\n' '|' | sed 's#|$##g')
 # Determine which node are not restored until now
 left=$(echo "$clients" | egrep -v $restored)
 
-echo "$left"
-
-#python restore.py $next $RESTORE_PATH
-#echo $next
+case $1 in
+    restore)
+        python restore.py $2 $RESTORE_PATH --restoreclient=$RESTORE_CLIENT
+    ;;
+    *)
+        echo "$left"
+    ;;
+esac
