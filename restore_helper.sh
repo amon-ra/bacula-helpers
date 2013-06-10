@@ -41,7 +41,7 @@ left=$(echo "$clients" | egrep -v $restored)
 
 case $1 in
     restore)
-        python restore.py $2 $RESTORE_PATH --restoreclient=$RESTORE_CLIENT
+        python restore.py $2 $RESTORE_PATH/$2 --restoreclient=$RESTORE_CLIENT
     ;;
     *)
         echo "$left"
